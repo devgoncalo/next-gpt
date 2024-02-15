@@ -7,7 +7,7 @@ NextGPT needs a Supabase URL and Anon Key to connect to your database. You can f
 
 You must create 3 tables in your supabase project:
 
-![NextGPT](./public/supabase_schema.png)
+![NextGPT](./assets/supabase_schema.png)
 
 You can create all the tables you need with the `sql function` that I cretead in the `sql` folder of the repo. You can use the `create-tables.sql` file in the `sql` folder of the repo to create the tables. Remember that you must enable the `pg_vector` extension before creating the tables.
 
