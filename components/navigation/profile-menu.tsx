@@ -47,9 +47,8 @@ const ProfileMenu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center w-full gap-3 py-1 px-1 rounded-md dark:hover:bg-neutral-900 hover:bg-neutral-100">
-        <Avatar className="">
+        <Avatar>
           <AvatarImage src={user?.avatar_url ?? ""} />
-
           <AvatarFallback>
             {user?.full_name?.slice(0, 2).toLocaleUpperCase() ?? " "}
           </AvatarFallback>
@@ -82,13 +81,15 @@ const ProfileMenu = () => {
             <AlertDialogHeader>
               <AlertDialogTitle>Clear conversations?</AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete
-                all your chats, messages and history.
+                This action cannot be undone. This will permanently delete all
+                your chats, messages and history.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={() => clearChats()}>Delete</AlertDialogAction>
+              <AlertDialogAction onClick={() => clearChats()}>
+                Delete
+              </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

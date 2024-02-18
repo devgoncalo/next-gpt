@@ -41,6 +41,7 @@ const useChat = ({
     if (isChatNew && chatID) {
       addMessageHandler("generate").then(async () => {
         writableParams.delete("new");
+        router.prefetch(`/chat/${chatID}`);
         router.replace(`/chat/${chatID}`);
       });
     }

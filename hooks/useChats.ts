@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import useSWR from "swr";
 
 const useChats = () => {
-  
   // Auth & Supabase
   const { user } = useAuth();
   const { supabase } = useSupabase();
@@ -71,6 +70,7 @@ const useChats = () => {
     });
 
     // Redirect to the new chat
+    router.prefetch(`/chat/${newChat.id}?new=true`);
     router.push(`/chat/${newChat.id}?new=true`);
   };
 
@@ -105,6 +105,7 @@ const useChats = () => {
 
     // Redirect to the home page if the deleted chat was the current route
     router.push(`/chat`);
+    router.refresh();
   };
 
   // Clear All Chats Handler
@@ -113,47 +114,48 @@ const useChats = () => {
     try {
       // Fetch the chat IDs associated with the user
       const { data: chatIds, error: chatIdsError } = await supabase
-        .from('chats')
-        .select('id')
-        .eq('owner', user?.id as string);
-  
+        .from("chats")
+        .select("id")
+        .eq("owner", user?.id as string);
+
       if (chatIdsError) {
         console.error(chatIdsError);
         return;
       }
-  
+
       // Extract chat IDs from the fetched data
-      const chatIdsArray = chatIds?.map(chat => chat.id);
-  
+      const chatIdsArray = chatIds?.map((chat) => chat.id);
+
       if (chatIdsArray && chatIdsArray.length > 0) {
         // Delete all messages associated with the user's chats
         const { error: messageError } = await supabase
-          .from('messages')
+          .from("messages")
           .delete()
-          .in('chat', chatIdsArray);
-  
+          .in("chat", chatIdsArray);
+
         if (messageError) {
           console.error(messageError);
           return;
         }
       }
-  
+
       // Delete all chats owned by the user
       const { error: chatError } = await supabase
-        .from('chats')
+        .from("chats")
         .delete()
-        .eq('owner', user?.id as string);
-  
+        .eq("owner", user?.id as string);
+
       if (chatError) {
         console.error(chatError);
         return;
       }
-  
+
       // Update the chats state by removing all chats
       mutate([]);
-  
+
       // Redirect to the home page if the deleted chat was the current route
       router.push(`/chat`);
+      router.refresh();
     } catch (error) {
       console.error(error);
     }

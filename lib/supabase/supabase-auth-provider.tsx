@@ -70,7 +70,9 @@ export default function SupabaseAuthProvider({
   // Sign Out
   const signOut = async () => {
     await supabase.auth.signOut();
+    router.prefetch("/login");
     router.push("/login");
+    router.refresh();
     console.log("Signed Out! (from supabase-auth-provider.tsx)");
   };
 

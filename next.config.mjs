@@ -29,9 +29,7 @@ const nextConfig = {
      * Suppress warning about not found modules
      */
     config.resolve.fallback = {
-      'aws-crt': false,
       encoding: false,
-      '@aws-sdk/signature-v4-crt': false,
       bufferutil: false,
       'utf-8-validate': false,
     }

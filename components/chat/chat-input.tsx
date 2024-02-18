@@ -47,6 +47,10 @@ const ChatInput = () => {
     if (!hasChatMessages && !chatID) {
       await addChatHandler();
     } else {
+      if (isSpeechRecognitionActive) {
+        // Set the Speech Recognition to False Before Sending the Message
+        setIsSpeechRecognitionActive(false);
+      }
       await addMessageHandler("generate");
     }
   };
@@ -104,7 +108,10 @@ const ChatInput = () => {
       <div className="w-full max-w-5xl mx-auto">
         {/* Abort Controller */}
         {isHandling && (
-          <div key="handling" className="flex items-center justify-center w-full max-w-5xl py-4">
+          <div
+            key="handling"
+            className="flex items-center justify-center w-full max-w-5xl py-4"
+          >
             <Button
               variant="test"
               size="test"
@@ -117,7 +124,10 @@ const ChatInput = () => {
         )}
         {/* Regenerate Controller - Desktop */}
         {!isHandling && isRegenerateSeen && (
-          <div key="regenerate" className="flex items-center justify-center py-2 sm:flex gap-2">
+          <div
+            key="regenerate"
+            className="flex items-center justify-center py-2 sm:flex gap-2"
+          >
             <Button
               variant="test"
               size="test"
@@ -193,19 +203,10 @@ const ChatInput = () => {
                 side="top"
               >
                 <p>Send message</p>
-                <div className="arrow"/>
+                <div className="arrow" />
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
-          {/* Regenerate Controller - Desktop 
-          {!isHandling && isRegenerateSeen && (
-            <RefreshCw
-              onClick={regenerateHandler}
-              size="18"
-              className="mr-4 cursor-pointer text-neutral-600 dark:peer-focus:text-neutral-500 peer-focus:text-neutral-300 sm:hidden"
-            />
-          )}
-          */}
         </form>
       </div>
     </div>
