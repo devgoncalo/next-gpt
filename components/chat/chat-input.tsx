@@ -183,7 +183,7 @@ const ChatInput = () => {
           </button>
           <TooltipProvider delayDuration={0}>
             <Tooltip>
-              <TooltipTrigger>
+              <TooltipTrigger asChild>
                 <button
                   type="submit"
                   className={`absolute max-sm:left-[88%] left-[95.5%] bottom-3 mr-4 py-[6px] px-[6px] rounded-md ${
@@ -199,7 +199,7 @@ const ChatInput = () => {
                 </button>
               </TooltipTrigger>
               <TooltipContent
-                className="mb-6 mr-16 max-sm:hidden max-md:hidden"
+                className="mb-6 mr-4 max-sm:hidden max-md:hidden"
                 side="top"
               >
                 <p>Send message</p>

@@ -108,6 +108,7 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
             className={`flex items-center w-full justify-center py-1 px-1 ml-12 rounded-sm dark:hover:bg-neutral-900 hover:bg-neutral-200 ${
               editingTitle ? "hidden" : ""
             }`}
+            asChild
           >
             <button
               onClick={(e) => {
