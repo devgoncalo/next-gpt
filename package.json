@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "cleanup": "rm -rf node_modules .next",
     "gen-types": "supabase gen types typescript --linked > types/supabase.ts"
   },
   "dependencies": {

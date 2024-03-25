@@ -28,6 +28,7 @@ import {
   SelectValue,
 } from "../ui/select";
 import { TextareaDefault } from "../ui/textarea-default";
+import { Input } from "../ui/input";
 
 const ChatSettingsMenu = () => {
   const { supabase } = useSupabase();
@@ -74,6 +75,10 @@ const ChatSettingsMenu = () => {
           <div className="px-2 py-1 bg-white rounded-md dark:bg-neutral-900">
             <span className=" text-neutral-400">Model: </span>
             GPT 3.5 Turbo
+          </div>
+          <div className="px-2 py-1 bg-white rounded-md shadow-sm dark:bg-neutral-900">
+            <span className=" text-neutral-400">Temperature: </span>
+            {currentChat?.advanced_settings.temperature}
           </div>
           <div className="px-2 py-1 bg-white rounded-md shadow-sm dark:bg-neutral-900">
             <span className=" text-neutral-400">System Propmt: </span>
@@ -142,6 +147,43 @@ const ChatSettingsMenu = () => {
                 </div>
               </div>
             )}
+            <div className="mt-6">
+              <Label>Temperature</Label>
+              <div className="flex items-center mt-2">
+                <Input
+                  type="number"
+                  defaultValue={currentChat?.advanced_settings.temperature}
+                  min={0}
+                  max={1}
+                  step={0.1}
+                  className="w-full"
+                  onChange={async (e) => {
+                    const value = parseFloat(e.target.value);
+                    setCurrentChat((prev) =>
+                      prev
+                        ? {
+                            ...prev,
+                            advanced_settings: {
+                              ...prev.advanced_settings,
+                              temperature: value,
+                            },
+                          }
+                        : prev
+                    );
+                    
+                    await supabase
+                      .from("chats")
+                      .update({
+                        advanced_settings: {
+                          ...currentChat?.advanced_settings,
+                          temperature: value,
+                        },
+                      })
+                      .eq("id", currentChat?.id as string);
+                  }}
+                />
+              </div>
+            </div>
             <div className="mt-6">
               <Label>History Type</Label>
               <Select
