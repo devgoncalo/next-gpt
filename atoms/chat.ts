@@ -11,11 +11,11 @@ import { atom } from "jotai";
 import { createRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-// Current Prices of GPT Models per 1000 tokens
-const modelPrices = {
-  "gpt-3.5-turbo": 0.002 / 1000,
-  "gpt-4": 0.03 / 1000,
+// Current Price of The Model per 1000 tokens
+const modelPrice = {
+  "gpt-3.5-turbo": 0.002 / 1000
 };
+
 export const defaultSystemPropmt = `You are NextGPT, a large language model trained by OpenAI.`;
 
 // To hold OpenAI API Key
@@ -154,12 +154,12 @@ export const tokenCountAtom = atom((get) => {
 
   const currentMessageToken = encode(currentMessage).length;
   const currentMessagePrice =
-    currentMessageToken * modelPrices[currentModel] + "$";
+    currentMessageToken * modelPrice[currentModel] + "$";
   const currentChatToken =
     get(messagesAtom).reduce((curr, arr) => {
       return curr + encode(arr.content as string).length;
     }, 0) + currentMessageToken;
-  const currentChatPrice = currentChatToken * modelPrices[currentModel] + "$";
+  const currentChatPrice = currentChatToken * modelPrice[currentModel] + "$";
 
   return {
     currentMessageToken,

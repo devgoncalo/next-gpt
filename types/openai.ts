@@ -17,7 +17,7 @@ export interface ChatGPTMessage {
 
 export interface OpenAIStreamPayload {
   apiKey: string;
-  model: "gpt-3.5-turbo" | "gpt-4";
+  model: "gpt-3.5-turbo";
   messages: ChatGPTMessage[];
   temperature: number;
   top_p: number;
@@ -29,7 +29,7 @@ export interface OpenAIStreamPayload {
 }
 
 export interface OpenAISettings {
-  model: "gpt-3.5-turbo" | "gpt-4";
+  model: "gpt-3.5-turbo";
   history_type: "chat" | "global";
   system_prompt: string;
   advanced_settings: {

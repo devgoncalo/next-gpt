@@ -35,7 +35,7 @@ interface UseSpeechToTextProps {
 }
 
 export const useSpeechToText = ({
-  lang = "en-US",
+  lang = "pt-PT",
   continuous = true,
   interimResults = true,
   maxAlternatives = 1,

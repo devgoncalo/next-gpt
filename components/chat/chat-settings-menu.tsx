@@ -73,7 +73,7 @@ const ChatSettingsMenu = () => {
         <DialogTrigger className="flex items-center max-w-full gap-4 pt-2 pb-4 overflow-x-auto text-xs whitespace-nowrap mb-1">
           <div className="px-2 py-1 bg-white rounded-md dark:bg-neutral-900">
             <span className=" text-neutral-400">Model: </span>
-            {currentChat?.model === "gpt-3.5-turbo" ? "GPT-3.5 Turbo" : "GPT-4"}
+            {currentChat?.model === "gpt-3.5-turbo"}
           </div>
           <div className="px-2 py-1 bg-white rounded-md shadow-sm dark:bg-neutral-900">
             <span className=" text-neutral-400">System Propmt: </span>
@@ -112,7 +112,7 @@ const ChatSettingsMenu = () => {
           <div className="mt-2">
             <Label>Model</Label>
             <Select
-              onValueChange={async (value: "gpt-4" | "gpt-3.5-turbo") => {
+              onValueChange={async (value: "gpt-3.5-turbo") => {
                 setCurrentChat((prev) =>
                   prev ? { ...prev, model: value } : prev
                 );
@@ -130,16 +130,15 @@ const ChatSettingsMenu = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value={"gpt-3.5-turbo"}>GPT-3.5 Turbo</SelectItem>
-                <SelectItem value={"gpt-4"}>GPT 4</SelectItem>
               </SelectContent>
             </Select>
-            {currentChat?.model === "gpt-4" && (
+            {currentChat?.model === "gpt-3.5-turbo" && (
               <div className="flex items-center gap-2 mt-3 dark:text-neutral-400">
                 <Info size="14" />
                 <div className="text-xs font-light ">
-                  GPT-4 is almost{" "}
-                  <span className="dark:text-neutral-300">10x expensive</span>{" "}
-                  than the previous model.
+                  GPT-3.5-Turbo is the cheapest and{" "}
+                  <span className="dark:text-neutral-300">the fastest</span>{" "}
+                  text generation model.
                 </div>
               </div>
             )}

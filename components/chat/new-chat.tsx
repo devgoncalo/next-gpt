@@ -51,25 +51,23 @@ const NewChat = () => {
         <div className="md:mt-6">
           <Label>Language Model</Label>
           <Select
-            onValueChange={(value: "gpt-3.5-turbo" | "gpt-4") =>
-              setModel(value)
-            }
+            defaultValue="gpt-3.5-turbo"
+            onValueChange={(value: "gpt-3.5-turbo") => setModel(value)}
           >
             <SelectTrigger className="w-full mt-3">
               <SelectValue placeholder="GPT-3.5 Turbo" defaultValue={model} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="gpt-3.5-turbo">GPT-3.5 Turbo</SelectItem>
-              <SelectItem value="gpt-4">GPT 4</SelectItem>
             </SelectContent>
           </Select>
-          {model === "gpt-4" && (
+          {model === "gpt-3.5-turbo" && (
             <div className="flex items-center gap-2 mt-3 dark:text-neutral-400">
               <Info size="14" />
-              <div className="text-xs font-light">
-                GPT-4 is almost{" "}
-                <span className="dark:text-neutral-300">10x expensive</span>{" "}
-                than the previous model.
+              <div className="text-xs font-light ">
+                GPT-3.5-Turbo is the cheapest and{" "}
+                <span className="dark:text-neutral-300">the fastest</span> text
+                generation model.
               </div>
             </div>
           )}
