@@ -13,9 +13,9 @@ import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 
 const Message = ({ message }: { message: MessageT }) => {
+  const { user } = useAuth();
   const isAssistant = message.role === "assistant";
   const codeRef = useRef<HTMLElement>(null);
-  const { user } = useAuth();
   const [copied, setCopied] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 

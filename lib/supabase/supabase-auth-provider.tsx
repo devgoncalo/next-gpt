@@ -1,13 +1,15 @@
 "use client";
 
+import useSWR from "swr";
+
 import { ownerIDAtom } from "@/atoms/chat";
 import { ProfileT } from "@/types/collections";
 import { Session } from "@supabase/supabase-js";
 import { useSetAtom } from "jotai";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect } from "react";
-import useSWR from "swr";
 import { useSupabase } from "./supabase-provider";
+
 interface ContextI {
   user: ProfileT | null | undefined;
   error: any;

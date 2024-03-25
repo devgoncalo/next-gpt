@@ -1,12 +1,13 @@
+import useChats from "@/hooks/useChats";
+import Link from "next/link";
+
 import { mobileMenuAtom } from "@/atoms/navigation";
 import { ChatWithMessageCountAndSettings } from "@/types/collections";
 import { titleCase } from "@/utils/helpers";
-import useChats from "@/hooks/useChats";
 
 import { useSetAtom } from "jotai";
 import { DateTime } from "luxon";
 import { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
 
 import { MessageCircle, Trash2, Pencil, MoreHorizontal } from "lucide-react";
 
@@ -35,8 +36,10 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
   const { updateChatTitle } = useChats();
 
   const [showOptionsButtons, setShowOptionsButtons] = useState(true);
-  const [editingTitle, setEditingTitle] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  const [originalTitle, setOriginalTitle] = useState(chat.title);
+  const [editingTitle, setEditingTitle] = useState(false);
   const [newTitle, setNewTitle] = useState(chat.title);
 
   const handleTitleUpdate = () => {
@@ -51,6 +54,7 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
 
   const handleTitleConfirm = useCallback(() => {
     updateChatTitle(chat.id, newTitle as string);
+    setOriginalTitle(newTitle);
     setEditingTitle(false);
   }, [chat.id, newTitle, setEditingTitle, updateChatTitle]);
 
