@@ -73,7 +73,7 @@ const ChatSettingsMenu = () => {
         <DialogTrigger className="flex items-center max-w-full gap-4 pt-2 pb-4 overflow-x-auto text-xs whitespace-nowrap mb-1">
           <div className="px-2 py-1 bg-white rounded-md dark:bg-neutral-900">
             <span className=" text-neutral-400">Model: </span>
-            {currentChat?.model === "gpt-3.5-turbo"}
+            GPT 3.5 Turbo
           </div>
           <div className="px-2 py-1 bg-white rounded-md shadow-sm dark:bg-neutral-900">
             <span className=" text-neutral-400">System Propmt: </span>

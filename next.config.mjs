@@ -19,9 +19,6 @@ const nextConfig = {
    * @param {import('webpack').Configuration} config
    */
   webpack: (config) => {
-    /**
-     * Suppress warning about not found modules
-     */
     config.resolve.fallback = {
       encoding: false,
       bufferutil: false,

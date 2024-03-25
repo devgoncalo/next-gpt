@@ -105,7 +105,7 @@ const ProfileMenu = () => {
           )}
           {theme === "dark" ? "Light Theme" : "Dark Theme"}
         </DropdownMenuItem>
-        <DropdownMenuItem
+        {/* <DropdownMenuItem
           onClick={() => {
             apiKeyHandler({
               action: "remove",
@@ -116,7 +116,7 @@ const ProfileMenu = () => {
           <div className="flex items-center gap-2">
             <RefreshCcw size="14" /> Reset API Key
           </div>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
         <AlertDialog>
           <AlertDialogTrigger
