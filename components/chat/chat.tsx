@@ -84,7 +84,12 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
       title={chat.title as string}
       href={`/chat/${chat.id}`}
     >
-      <div className="flex items-center w-full gap-2 px-3 py-2 transition-colors duration-100 ease-in-out rounded-md bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+      <div 
+      className="flex items-center w-full gap-2 px-3 py-2 transition-colors duration-100 ease-in-out rounded-md bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+      onDoubleClick={() => {
+        editingTitle ? handleTitleConfirm() : handleTitleUpdate();
+      }}
+      >
         {editingTitle ? (
           <input
             ref={inputRef}
