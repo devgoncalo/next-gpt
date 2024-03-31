@@ -46,7 +46,7 @@ const ProfileMenu = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center w-full gap-3 py-1 px-1 rounded-md dark:hover:bg-neutral-900 hover:bg-neutral-100">
+      <DropdownMenuTrigger className="flex items-center w-full gap-3 py-1 px-2 rounded-md dark:hover:bg-neutral-900 hover:bg-neutral-100">
         <Avatar>
           <AvatarImage src={user?.avatar_url ?? ""} />
           <AvatarFallback>
@@ -54,9 +54,9 @@ const ProfileMenu = () => {
           </AvatarFallback>
         </Avatar>
 
-        <div className="flex justifiy-center items-center space-x-10 text-left whitespace-nowrap">
+        <div className="w-full flex justifiy-center items-center space-x-10 text-left whitespace-nowrap">
           <div className="text-base">{user?.full_name}</div>
-          <MoreHorizontal size="16" />
+          <MoreHorizontal size="16" className="mr-1"/>
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full mb-2" side="top" align="start">

@@ -1,4 +1,5 @@
 "use client";
+
 import { currentChatAtom, defaultSystemPropmt } from "@/atoms/chat";
 import { useSupabase } from "@/lib/supabase/supabase-provider";
 import { useAtom } from "jotai";
