@@ -1,3 +1,5 @@
+import useSWR from "swr";
+
 import { chatsAtom, openAISettingsAtom } from "@/atoms/chat";
 import { useAuth } from "@/lib/supabase/supabase-auth-provider";
 import { useSupabase } from "@/lib/supabase/supabase-provider";
@@ -6,8 +8,6 @@ import { ChatWithMessageCountAndSettings } from "@/types/collections";
 import { useAtom, useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-
-import useSWR from "swr";
 
 const useChats = () => {
   // Auth & Supabase
@@ -20,6 +20,7 @@ const useChats = () => {
 
   const router = useRouter();
 
+  // Fetch Chats
   const fetcher = async () => {
     const { data, error } = await supabase
       .from("chats")
@@ -56,6 +57,7 @@ const useChats = () => {
       .select(`*`)
       .returns<ChatWithMessageCountAndSettings[]>()
       .single();
+
     if (error && !newChat) {
       console.log(error);
       return;
@@ -71,18 +73,18 @@ const useChats = () => {
     });
 
     // Redirect to the new chat
-    router.prefetch(`/chat/${newChat.id}?new=true`);
-    router.push(`/chat/${newChat.id}?new=true`);
+    router.prefetch(`/chat/${newChat.id}`);
+    router.push(`/chat/${newChat.id}`);
   };
 
   // Remove a Chat Handler
-
   const deleteChat = async (chatId: string) => {
     // Delete all messages associated with the chat
     const { error: messageError } = await supabase
       .from("messages")
       .delete()
       .eq("chat", chatId);
+
     if (messageError) {
       console.log(messageError);
       return;
@@ -93,6 +95,7 @@ const useChats = () => {
       .from("chats")
       .delete()
       .eq("id", chatId);
+      
     if (chatError) {
       console.log(chatError);
       return;
@@ -110,7 +113,6 @@ const useChats = () => {
   };
 
   // Clear All Chats Handler
-
   const clearChats = async () => {
     try {
       // Fetch the chat IDs associated with the user
@@ -163,7 +165,6 @@ const useChats = () => {
   };
 
   // Update Chat Title Handler
-
   const updateChatTitle = async (chatId: string, newTitle: string) => {
     const { error } = await supabase
       .from("chats")

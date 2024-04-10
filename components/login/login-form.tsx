@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import nextGPTIcon from "@/assets/nextgpt-icon.svg";
 
