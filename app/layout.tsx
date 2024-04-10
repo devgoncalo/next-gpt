@@ -3,7 +3,7 @@ import ".//globals.css";
 
 export const metadata = {
   title: "NextGPT",
-  description: "The all-in-one text model interface for developers.",
+  description: "An enhanced GPT interface for developers. ",
 };
 
 import SupabaseAuthProvider from "@/lib/supabase/supabase-auth-provider";

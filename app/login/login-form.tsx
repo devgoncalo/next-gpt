@@ -21,7 +21,7 @@ const LoginForm = () => {
           <div className="space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">next.gpt</h1>
             <p className="text-sm text-neutral-400">
-              The all-in-one text model interface for developers.
+              An enhanced GPT interface for developers.
             </p>
           </div>
         </div>
