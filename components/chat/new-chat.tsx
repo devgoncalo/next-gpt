@@ -1,9 +1,11 @@
 "use client";
 
 import { openAISettingsAtom } from "@/atoms/chat";
+
 import { useAtom } from "jotai";
 import { focusAtom } from "jotai-optics";
 import { Info } from "lucide-react";
+
 import { Label } from "../ui/label";
 import {
   Select,

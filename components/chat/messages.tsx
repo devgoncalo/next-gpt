@@ -1,7 +1,9 @@
 "use client";
 
 import { chatboxRefAtom, messagesAtom } from "@/atoms/chat";
+
 import { useAtomValue } from "jotai";
+
 import Message from "./message";
 
 const Messages = () => {

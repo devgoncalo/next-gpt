@@ -1,6 +1,7 @@
 import Chatbox from "@/components/chat/chatbox";
 import { createClient } from "@/lib/supabase/supabase-server";
 import { MessageT } from "@/types/collections";
+
 import { notFound } from "next/navigation";
 
 export const revalidate = 0;

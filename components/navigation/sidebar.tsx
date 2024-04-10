@@ -4,6 +4,7 @@ import { mobileMenuAtom } from "@/atoms/navigation";
 import useChats from "@/hooks/useChats";
 import { useAtom } from "jotai";
 import { Plus } from "lucide-react";
+
 import Chats from "../chat/chats";
 import ProfileMenu from "./profile-menu";
 

@@ -1,8 +1,15 @@
 "use client";
 
+import { useSetAtom } from "jotai";
 import { openAPIKeyHandlerAtom } from "@/atoms/chat";
 import { useAuth } from "@/lib/supabase/supabase-auth-provider";
-import { useSetAtom } from "jotai";
+
+import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
+
+import Link from "next/link";
+import useChats from "@/hooks/useChats";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,6 +21,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+
 import {
   LogOut,
   RefreshCcw,
@@ -23,18 +40,6 @@ import {
   ExternalLink,
   Trash2,
 } from "lucide-react";
-import { useTheme } from "next-themes";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
-import useChats from "@/hooks/useChats";
 
 const ProfileMenu = () => {
   const { theme, setTheme } = useTheme();
@@ -56,7 +61,7 @@ const ProfileMenu = () => {
 
         <div className="w-full flex justifiy-center items-center space-x-10 text-left whitespace-nowrap">
           <div className="text-base">{user?.full_name}</div>
-          <MoreHorizontal size="16" className="mr-1"/>
+          <MoreHorizontal size="16" className="mr-1" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full mb-2" side="top" align="start">

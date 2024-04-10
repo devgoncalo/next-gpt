@@ -1,5 +1,7 @@
 "use client";
+
 import useChats from "@/hooks/useChats";
+
 import Spinner from "../ui/spinner";
 import Chat from "./chat";
 

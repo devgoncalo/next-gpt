@@ -2,6 +2,7 @@ import { chatsAtom, openAISettingsAtom } from "@/atoms/chat";
 import { useAuth } from "@/lib/supabase/supabase-auth-provider";
 import { useSupabase } from "@/lib/supabase/supabase-provider";
 import { ChatWithMessageCountAndSettings } from "@/types/collections";
+
 import { useAtom, useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

@@ -7,12 +7,13 @@ import {
   tokenSizeLimitAtom,
 } from "@/atoms/chat";
 import { useSupabase } from "@/lib/supabase/supabase-provider";
+import { dottedNumber, titleCase } from "@/utils/helpers";
+
+import { useCallback, useMemo } from "react";
 import { useAtom, useAtomValue } from "jotai";
 import debounce from "lodash.debounce";
 import { Info } from "lucide-react";
 
-import { dottedNumber, titleCase } from "@/utils/helpers";
-import { useCallback, useMemo } from "react";
 import {
   Dialog,
   DialogContent,

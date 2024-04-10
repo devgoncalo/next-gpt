@@ -5,9 +5,10 @@ import {
   messagesAtom,
 } from "@/atoms/chat";
 import { ChatWithMessageCountAndSettings, MessageT } from "@/types/collections";
+
+import { useEffect, useMemo } from "react";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo } from "react";
 
 const useChat = ({
   currentChat,

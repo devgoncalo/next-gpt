@@ -2,7 +2,9 @@
 
 import { currentChatAtom } from "@/atoms/chat";
 import { mobileMenuAtom } from "@/atoms/navigation";
+
 import { useAtomValue, useSetAtom } from "jotai";
+
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 

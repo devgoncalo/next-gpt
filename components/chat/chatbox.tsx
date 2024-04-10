@@ -2,6 +2,7 @@
 import { currentChatHasMessagesAtom } from "@/atoms/chat";
 import useChat from "@/hooks/useChat";
 import { ChatWithMessageCountAndSettings, MessageT } from "@/types/collections";
+
 import { useAtomValue } from "jotai";
 import MobileMenuButton from "../navigation/mobile-menu-button";
 import ChatInput from "./chat-input";

@@ -1,5 +1,6 @@
 import openai from "@/lib/openai";
 import { createClient } from "@/lib/supabase/supabase-server";
+
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request): Promise<Response> {

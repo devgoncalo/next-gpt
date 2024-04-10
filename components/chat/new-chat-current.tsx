@@ -2,10 +2,12 @@
 
 import { currentChatAtom, defaultSystemPropmt } from "@/atoms/chat";
 import { useSupabase } from "@/lib/supabase/supabase-provider";
+
 import { useAtom } from "jotai";
 import debounce from "lodash.debounce";
 import { Info } from "lucide-react";
 import { useCallback, useMemo } from "react";
+
 import { Label } from "../ui/label";
 import {
   Select,

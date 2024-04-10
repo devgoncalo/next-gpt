@@ -1,13 +1,15 @@
 import { MessageT } from "@/types/collections";
 import { useAuth } from "@/lib/supabase/supabase-auth-provider";
+
 import { Clipboard, User, Check } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { CodeBlock } from "@/components/ui/codeblock";
-import { MemoizedReactMarkdown } from "@/components/ui/markdown";
 
 import Image from "next/image";
 import gptAvatar from "@/assets/gpt-avatar.png";
+
+import { CodeBlock } from "@/components/ui/codeblock";
+import { MemoizedReactMarkdown } from "@/components/ui/markdown";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
