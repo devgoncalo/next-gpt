@@ -59,9 +59,9 @@ const ProfileMenu = () => {
           </AvatarFallback>
         </Avatar>
 
-        <div className="w-full flex justifiy-center items-center space-x-10 text-left whitespace-nowrap">
+        <div className="w-full flex justifiy-center items-center space-x-8 text-left whitespace-nowrap">
           <div className="text-base">{user?.full_name}</div>
-          <MoreHorizontal size="16" className="mr-1" />
+          <MoreHorizontal size="16"/>
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-full mb-2" side="top" align="start">

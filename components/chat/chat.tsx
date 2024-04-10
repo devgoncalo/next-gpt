@@ -44,7 +44,7 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
   const [newTitle, setNewTitle] = useState(chat.title);
 
   const handleTitleUpdate = () => {
-    // Checks if the title has been changed before activating editing
+    // Checks if the title has been changed before editing
     if (originalTitle !== chat.title) {
       setNewTitle(chat.title);
     }

@@ -132,7 +132,7 @@ const handlingAtom = atom<boolean>(false);
 export const chatboxRefAtom = atom(createRef<HTMLDivElement>());
 // Chat Input
 export const inputAtom = atom<string>("");
-
+// Wehere we keep current owner ID
 export const ownerIDAtom = atom<string>("");
 // Where we keep current chat ID - (Read Only)
 export const chatIDAtom = atom<string>((get) => get(currentChatAtom)?.id ?? "");
