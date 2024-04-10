@@ -170,13 +170,13 @@ export const tokenCountAtom = atom((get) => {
 });
 
 export const tokenSizeLimitAtom = atom((get) => {
-  const limit = 4000; // TODO: Change this based on the model.
+  const limit = 4000;
   const responseLimit =
     get(currentChatAtom)?.advanced_settings?.max_tokens ?? 1000;
   const systemPropmtTokenSize =
-    encode(get(currentChatAtom)?.system_prompt ?? "").length + 90; // 90 is for static text we provided for the sake of this app.
-  const buffer = 250; // Buffer TODO: Find a proper solution
-  // Calcula the context token size
+    encode(get(currentChatAtom)?.system_prompt ?? "").length + 90; // 90 is for static text we provided
+  const buffer = 250;
+  // Calculate the context token size
   const contextTokenSize = encode(
     JSON.stringify(get(previousContextAtom))
   ).length;

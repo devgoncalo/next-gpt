@@ -149,14 +149,11 @@ const NewChatCurrent = () => {
                   prev
                     ? {
                         ...prev,
-                        system_prompt: value ? value : defaultSystemPropmt,
+                        system_prompt: value,
                       }
                     : prev
                 );
-                await debouncedSendSupabase(
-                  value ? value : defaultSystemPropmt,
-                  currentChat?.id as string
-                );
+                await debouncedSendSupabase(value, currentChat?.id as string);
               }}
               className="mt-3 resize-none"
             />

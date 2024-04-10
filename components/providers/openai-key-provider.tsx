@@ -42,7 +42,7 @@ const OpenAIKeyProvider = ({
       if (response!.ok) {
         keyHandler({ action: "set", key: value });
       } else {
-        console.log(data.message); // TODO: Add Toast
+        console.log(data.message);
       }
       setIsHandling(false);
     }
