@@ -1,12 +1,14 @@
 'use client'
 
-import { FC, memo } from 'react'
+import { FC } from 'react'
+
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
-import { IconCheck, IconCopy, IconDownload } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
+
+import { Check, Copy, Download } from 'lucide-react'
 
 interface Props {
   language: string
@@ -41,7 +43,6 @@ export const programmingLanguages: languageMap = {
   sql: '.sql',
   html: '.html',
   css: '.css'
-  // add more file extensions here, make sure the key is same as language prop in CodeBlock.tsx component
 }
 
 export const generateRandomString = (length: number, lowercase = false) => {
@@ -100,7 +101,7 @@ const CodeBlock: FC<Props> = (({ language, value }) => {
             onClick={downloadAsFile}
             size="sm"
           >
-            <IconDownload />
+            <Download className='w-4 h-4'/>
             <span className="sr-only">Download</span>
           </Button>
           <Button
@@ -109,7 +110,7 @@ const CodeBlock: FC<Props> = (({ language, value }) => {
             className="text-xs hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"
             onClick={onCopy}
           >
-            {isCopied ? <IconCheck /> : <IconCopy />}
+            {isCopied ? <Check className='w-4 h-4'/> : <Copy className='w-4 h-4'/>}
             <span className="sr-only">Copy code</span>
           </Button>
         </div>
