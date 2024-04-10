@@ -31,6 +31,7 @@ import {
 
 const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
   const showMobileMenu = useSetAtom(mobileMenuAtom);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const { deleteChat } = useChats();
   const { updateChatTitle } = useChats();
@@ -43,6 +44,10 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
   const [newTitle, setNewTitle] = useState(chat.title);
 
   const handleTitleUpdate = () => {
+    // Checks if the title has been changed before activating editing
+    if (originalTitle !== chat.title) {
+      setNewTitle(chat.title);
+    }
     setEditingTitle(true);
   };
 
@@ -50,13 +55,13 @@ const Chat = ({ chat }: { chat: ChatWithMessageCountAndSettings }) => {
     setNewTitle(e.target.value);
   };
 
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const handleTitleConfirm = useCallback(() => {
-    updateChatTitle(chat.id, newTitle as string);
-    setOriginalTitle(newTitle);
+    // If the title has not been changed, keep the original title
+    const updatedTitle = newTitle === originalTitle ? originalTitle : newTitle;
+
+    updateChatTitle(chat.id, updatedTitle as string);
     setEditingTitle(false);
-  }, [chat.id, newTitle, setEditingTitle, updateChatTitle]);
+  }, [chat.id, newTitle, originalTitle, setEditingTitle, updateChatTitle]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
